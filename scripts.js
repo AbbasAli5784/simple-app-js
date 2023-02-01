@@ -1,26 +1,14 @@
-//old code below!
-
-/*let message = " ";
-pokemonList.forEach(function (user) {
-  if (user.height > 0.6) {
-    message = ":wow thats big!";
-  } else {
-    message = " ";
-  }
-  document.write(user.name + " " + user.height + " " + message + "<br>");
-});*/
-let pokemonRepository = (function () {
-  let pokemonList = [
-    { name: "Bulbasaur", height: 0.7, type: ["grass", "poison"] },
-    { name: "Charmander", height: 0.6, type: ["fire", "earth"] },
-    { name: "Pikachu", height: 0.4, type: ["lightning", "earth"] },
-  ];
+const pokemonRepository = (function () {
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
   return {
     add: function (pokemon) {
       pokemonList.push(pokemon);
     },
     showDetails: function (pokemon) {
-      console.log(pokemon.name);
+      pokemonRepository.loadDetails(pokemon).then(function () {
+        console.log(pokemon);
+      });
     },
     addListItem: function (pokemon) {
       let list = document.querySelector(".pokemon-list");
@@ -39,7 +27,41 @@ let pokemonRepository = (function () {
         pokemonRepository.addListItem(pokemon);
       });
     },
+    loadList: function () {
+      return fetch(apiUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          json.results.forEach(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url,
+            };
+            pokemonRepository.add(pokemon);
+          });
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+    },
+    loadDetails: function (pokemon) {
+      let url = pokemon.detailsUrl;
+      return fetch(url)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (details) {
+          pokemon.imageUrl = details.sprites.front_default;
+          pokemon.height = details.height;
+          pokemon.types = details.types;
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+    },
   };
 })();
-pokemonRepository.add({ name: "Squirtle", height: 0.9, type: ["water"] });
-pokemonRepository.getAll();
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll();
+});
