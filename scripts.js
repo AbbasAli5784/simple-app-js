@@ -13,11 +13,11 @@ const pokemonRepository = (function () {
         let image = document.querySelector(".modal-image");
         let closeButton = document.querySelector(".modal-close");
         let modalContainer = document.querySelector(".modal-container");
+        modalContainer.style.display = "block";
+
         closeButton.addEventListener("click", function () {
-          console.log("Before event listener:", closeButton);
           modalContainer.style.display = "none";
         });
-        console.log("After event listner: ", closeButton);
         name.innerText = pokemon.name;
         height.innerText = pokemon.height;
         image.src = pokemon.imageUrl;
@@ -30,6 +30,7 @@ const pokemonRepository = (function () {
       button.innerText = pokemon.name;
       button.classList.add("my-button");
       button.addEventListener("click", function () {
+        document.querySelector(".modal-container").classList.add("is-visible");
         pokemonRepository.showDetails(pokemon);
       });
       listItem.appendChild(button);
