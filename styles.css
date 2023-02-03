@@ -18,8 +18,8 @@
 .modal-container {
   display: none;
 }
-#modal-container.is-visible {
-  display: block;
+.modal-container.is-visible {
+  display: grid;
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
@@ -30,7 +30,6 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
   overflow: auto;
-  display: grid;
   text-align: center;
 }
 .modal {
