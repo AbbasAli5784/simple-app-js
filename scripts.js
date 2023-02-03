@@ -7,7 +7,20 @@ const pokemonRepository = (function () {
     },
     showDetails: function (pokemon) {
       pokemonRepository.loadDetails(pokemon).then(function () {
-        console.log(pokemon);
+        let modal = document.querySelector(".modal");
+        let name = document.querySelector(".modal-name");
+        let height = document.querySelector(".modal-height");
+        let image = document.querySelector(".modal-image");
+        let closeButton = document.querySelector(".modal-close");
+        let modalContainer = document.querySelector(".modal-container");
+        closeButton.addEventListener("click", function () {
+          console.log("Before event listener:", closeButton);
+          modalContainer.style.display = "none";
+        });
+        console.log("After event listner: ", closeButton);
+        name.innerText = pokemon.name;
+        height.innerText = pokemon.height;
+        image.src = pokemon.imageUrl;
       });
     },
     addListItem: function (pokemon) {
