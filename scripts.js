@@ -1,6 +1,6 @@
 const pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
   return {
     add: function (pokemon) {
       pokemonList.push(pokemon);
@@ -23,8 +23,6 @@ const pokemonRepository = (function () {
       modalBody.append(height);
       modalBody.append(type);
       modalBody.append(image);
-
-      showModal();
     },
     showDetails: function (pokemon) {
       pokemonRepository.loadDetails(pokemon).then(function () {
