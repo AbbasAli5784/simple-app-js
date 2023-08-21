@@ -1,15 +1,15 @@
 const pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
   return {
     add: function (pokemon) {
       pokemonList.push(pokemon);
     },
     showModal: function (pokemon) {
-      let modalBody = $(".modal-body");
+      let modalContainer = $(".modal-container");
       let modalTitle = $(".modal-title");
-      modalBody.empty();
       modalTitle.empty();
+      modalContainer.empty();
 
       let name = $("<h5>" + "Pokemon:" + " " + pokemon.name + "</h5>");
       let height = $("<p>" + "Height:" + pokemon.height + "</p>");
@@ -20,9 +20,9 @@ const pokemonRepository = (function () {
       );
 
       modalTitle.append(name);
-      modalBody.append(height);
-      modalBody.append(type);
-      modalBody.append(image);
+      modalContainer.append(height);
+      modalContainer.append(type);
+      modalContainer.append(image);
     },
     showDetails: function (pokemon) {
       pokemonRepository.loadDetails(pokemon).then(function () {
@@ -33,7 +33,7 @@ const pokemonRepository = (function () {
       let list = $(".pokemon-list");
       let listItem = $("<li > </li>");
       let button = $(
-        '<button type = "button" class = "pokemon-button btn btn-primary list-group-item" data-toggle= "modal" data-target="#exampleModal"> </button>'
+        '<button type = "button" class = "pokemon-button btn btn-primary list-group-item"> </button>'
       )
         .text(pokemon.name)
         .addClass("my-button")

@@ -8,77 +8,99 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <title>Simple JS App</title>
+    <title>PokeDex App</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .pokedex-container {
+        background-color: #ff0000;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        overflow: hidden;
+      }
+
+      .pokemon-list {
+        background-color: #ffffff;
+        height: 500px;
+        overflow-y: auto;
+      }
+
+      .modal-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-left: 5px solid #ff0000;
+      }
+    </style>
   </head>
 
-  <h1>Pokedex</h1>
-  <!-- Button trigger modal -->
-
-  <!-- Modal -->
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <body>
+    <div class="container pokedex-container">
+      <h1 class="text-center text-white p-3">Pokedex App</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="pokemon-list list-group"></ul>
         </div>
-        <div class="modal-body">
+        <div class="col-md-8 modal-container">
+          <h5 class="modal-title">Pokemon Details</h5>
           <p class="modal-name"></p>
           <p class="modal-height"></p>
           <p class="modal-type"></p>
           <img class="modal-image" />
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pokemon Details</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="modal-name"></p>
+            <p class="modal-height"></p>
+            <p class="modal-type"></p>
+            <img class="modal-image" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row col-12">
-    <ul class="pokemon-list list-group  "></ul>
-  </div>
-  <div class="modal-container">
-    <div class="modal">
-      <span class="modal-close">&times;</span>
-      <p class="modal-name"></p>
-      <p class="modal-height"></p>
-      <img class="modal-image" />
-    </div>
-  </div>
-  <body>
+    <!-- Scripts -->
     <script src="/promise-polyfill-master/dist/polyfill.min.js"></script>
     <script src="fetch-polyfill.js"></script>
     <script src="scripts.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-      integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src ="dist/minified.js"></script>
+    <script src="dist/minified.js"></script>
   </body>
-  -
 </html>

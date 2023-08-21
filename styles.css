@@ -1,3 +1,27 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.pokedex-container {
+  background-color: #ff0000;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.pokemon-list {
+  background-color: #ffffff;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.modal-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-left: 5px solid #ff0000;
+}
+
 .my-button {
   background-color: #4caf50;
   border: none;
@@ -11,7 +35,13 @@
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   cursor: pointer;
+  background-color: #007bff; /* Changed color to Bootstrap's primary blue */
+  color: white;
+  border: 2px solid #007bff;
+}
+
+.my-button:hover {
   background-color: white;
-  color: black;
-  border: 2px solid #4caf50;
+  color: #007bff;
+  border: 2px solid #007bff;
 }
