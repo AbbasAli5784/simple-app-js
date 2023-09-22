@@ -1,4 +1,4 @@
-# simple-app-js
+# PokeDex App
 Pokedex App
 This application allows you to search for and view information on different Pokemon. The app is built using HTML, JavaScript, and Bootstrap, and uses an external Pokedex API to fetch data.
 
